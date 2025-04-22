@@ -12,7 +12,7 @@
     
     <header class="bg-stone-900">
 
-        <nav class="mx-auto max-w-screen-lg flex justify-between px-8 py-4">
+        <nav class="mx-auto max-w-screen-lg flex justify-between py-4">
 
             <div class="font-bold text-xl tracking-wide">Book Wise</div>
 
@@ -31,9 +31,27 @@
 
     </header>
 
-    <main>
+    <main class="mx-auto max-w-screen-lg space-y-6">
 
-        lista de livros
+        <form class="w-full flex space-x-2 mt-6">
+
+            <input 
+                type="text" 
+
+                class="border-stone-800 border-2 rounded-md bg-stone-900 text-sm focus:outline-none px-2 py-1 w-full"
+
+                placeholder="Pesquisar..."
+            >
+            
+            <button type="submit">🔎</button>
+
+        </form>
+
+        <div>
+
+            lista final
+
+        </div>
 
     </main>
 
