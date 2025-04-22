@@ -42,16 +42,35 @@
 
                 placeholder="Pesquisar..."
             >
-            
+
             <button type="submit">🔎</button>
 
         </form>
 
-        <div>
+        <section class="space-y-4">
 
-            lista final
+            <!-- Livro -->
+            <div class="w-1/3 p-2 rounded border-stone-800 border-2 bg-stone-900">
 
-        </div>
+                <div class="flex">
+
+                    <div class="w-1/3">Imagem</div>
+
+                    <div>
+
+                        <div class="font-semibold">Titulo</div>
+                        <div class="text-xs italic">Autor</div>
+                        <div class="text-xs italic">⭐⭐⭐⭐⭐(3 Avaliações)</div>
+
+                    </div>
+
+                </div>
+
+                <div class="text-sm">Descrição</div>
+
+            </div>
+
+        </section>
 
     </main>
 
