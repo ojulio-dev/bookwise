@@ -1,9 +1,13 @@
 <?php
 
-require 'dados.php';
+$controller = 'index';
 
-$view = 'index';
+if (isset($_SERVER['PATH_INFO'])) {
 
-require 'views/template/app.php';
+    $controller = str_replace('/', '', $_SERVER['PATH_INFO']);
+
+}
+
+require "controllers/{$controller}.controller.php";
 
 ?>
