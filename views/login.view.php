@@ -32,7 +32,7 @@
 
         <h1 class="border-b border-stone-700 text-stone-400 font-bold px-4 py-2">Registro</h1>
 
-        <form class="p-4 space-y-4">
+        <form class="p-4 space-y-4" method="POST" >
 
             <div class="flex flex-col">
  
