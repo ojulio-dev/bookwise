@@ -15,6 +15,8 @@ class Livro {
 
     public $descricao;
 
+    public $usuario_id;
+
     public static function make($item) {
 
         $livro = new self();
@@ -26,6 +28,8 @@ class Livro {
         $livro->autor = $item['autor'];
 
         $livro->descricao = $item['descricao'];
+
+        $livro->usuario_id = $item['usuario_id'];
 
         return $livro;
 

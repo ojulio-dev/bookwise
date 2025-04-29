@@ -16,11 +16,15 @@ class DB {
      * @return array[Livro]
      * 
      */
-    public function livros() {
+    public function livros($pesquisa = null) {
 
-        $query = $this->db->query("select * from livros");
+        $prepare = $this->db->prepare("select * from livros where usuario_id = 1 and titulo like :pesquisa");
 
-        $items = $query->fetchAll();
+        $prepare->bindValue('pesquisa', "%$pesquisa%");
+
+        $prepare->execute();
+
+        $items = $prepare->fetchAll();
 
         return array_map(fn($item) => Livro::make($item), $items);
 
