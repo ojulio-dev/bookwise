@@ -1,9 +1,5 @@
 <?php
 
-echo $_SERVER['REQUEST_METHOD'];
+$mensagem = $_REQUEST['mensagem'] ?? '';
 
-dump($_GET);
-
-dump($_POST);
-
-view('login');
+view('login', compact('mensagem'));
