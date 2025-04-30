@@ -111,10 +111,18 @@ class Validacao {
 
     }
 
-    public function naoPassou()
+    public function naoPassou($nomeCustomizado = null)
     {
 
-        $_SESSION['validacoes'] = $this->validacoes;
+        $chave = 'validacoes';
+
+        if ($nomeCustomizado) {
+
+            $chave .= '_' . $nomeCustomizado;
+
+        }
+
+        flash()->push($chave, $this->validacoes);
 
         return sizeof($this->validacoes) > 0;
 
