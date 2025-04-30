@@ -99,22 +99,63 @@ class Validacao {
 
             foreach($regrasDoCampo as $regra) {
 
-                $validacao->$regra($campo);
+                $valorDoCampo = $dados[$campo];
+
+                if ($regra == 'confirmed') {
+
+                    $validacao->$regra($campo, $valorDoCampo, $dados["{$campo}_confirmacao"]);
+                        
+                } else {
+
+                    $validacao->$regra($campo, $valorDoCampo);
+
+                }
 
             }
 
         }
 
+        return $validacao;
+
     }
 
-    private function required($campo)
+    private function required($campo, $valor)
     {
 
-        if (strlen($campo) == 0) {
+        if (strlen($valor) == 0) {
 
             $this->validacoes[] = "O $campo é obrigatório.";
     
         }
+
+    }
+
+    private function email($campo, $valor)
+    {
+
+        if (! filter_var($valor, FILTER_VALIDATE_EMAIL)) {
+
+            $this->validacoes[] = "O $campo é inválido.";
+    
+        }
+
+    }
+
+    private function confirmed($campo, $valor, $valorDeConfirmacao)
+    {
+
+        if ($valor != $valorDeConfirmacao) {
+
+            $this->validacoes[] = "O $campo de confirmação está diferente.";
+    
+        }
+
+    }
+
+    public function naoPassou()
+    {
+
+        return sizeof($this->validacoes) > 0;
 
     }
 

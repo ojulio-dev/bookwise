@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         'nome' => ['required'],
         'email' => ['required', 'email', 'confirmed'],
-        'senha' => ['required', 'min:8', 'max:30', 'strong']
+        // 'senha' => ['required', 'min:8', 'max:30', 'strong']
 
     ], $_POST);
 
