@@ -2,7 +2,7 @@
 
 class Validacao {
 
-    public $validacoes;
+    public $validacoes = [];
 
     public static function validar($regras, $dados)
     {
@@ -114,7 +114,7 @@ class Validacao {
     public function naoPassou()
     {
 
-        $_SESSION['validacoes'] = $validacao->validacoes;
+        $_SESSION['validacoes'] = $this->validacoes;
 
         return sizeof($this->validacoes) > 0;
 
