@@ -1,12 +1,11 @@
 <?php
 
-require 'Validacao.php';
+/**
+ * 
+ * 
+ * $validacao = Validacao::validar([
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-    $validacao = Validacao::validar([
-
-        'nome' => ['required'],
+        'nome' => 'required',
         'email' => ['required', 'email', 'confirmed'],
         'senha' => ['required', 'min:8', 'max:30', 'strong']
 
@@ -21,8 +20,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit();
 
     }
-
-    $validacoes = [];
+ * 
+ * $validacoes = [];
 
     $nome = $_POST['nome'];
 
@@ -83,21 +82,41 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit();
 
     }
+ * 
+ * 
+ */
 
-    $database->query(
+class Validacao {
 
-        query: "insert into usuarios (nome, email, senha) values (:nome, :email, :senha)",
+    public $validacoes;
 
-        params: [
-            'nome' => $_POST['nome'],
-            'email' => $_POST['email'],
-            'senha' => $_POST['senha']
-        ]
+    public static function validar($regras, $dados)
+    {
 
-    );
+        $validacao = new self;
 
-    header('location: /login?mensagem=Registrado com sucesso!');
+        foreach($regras as $campo => $regrasDoCampo) {
 
-    exit();
+            foreach($regrasDoCampo as $regra) {
 
-};
+                $validacao->$regra($campo);
+
+            }
+
+        }
+
+    }
+
+    private function required($campo)
+    {
+
+        if (strlen($campo) == 0) {
+
+            $this->validacoes[] = "O $campo é obrigatório.";
+    
+        }
+
+    }
+
+}
+
