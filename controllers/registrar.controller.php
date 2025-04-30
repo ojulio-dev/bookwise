@@ -1,7 +1,5 @@
 <?php
 
-require 'Validacao.php';
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $validacao = Validacao::validar([
